@@ -16,6 +16,8 @@
 #define greenAdc  A2
 #define blueAdc   A3
 
+#define internalLED 13
+
 bool down = true;		/* directional flag */
 
 int adc;
@@ -23,6 +25,8 @@ uchar red, green, blue;		//red, green and blue values
 
 void setup()
 {
+    pinMode(internalLED,OUTPUT);
+
     pinMode(redPin, OUTPUT);
     pinMode(greenPin, OUTPUT);
     pinMode(bluePin, OUTPUT);
@@ -33,16 +37,11 @@ void setup()
     digitalWrite(greenAdc, HIGH); // set pullup on analog pin 3
 
     mapValueToPins(255); //run time test
-
-    int red = 255;
-    int blue = 255;
-    int green = 255;
 }
 
 void loop()
 {
     adc = analogRead(adcPin);
-    /* mapValueToPins(adc / 4); */
 
     red = analogRead(redAdc) / 4;
     green = analogRead(greenAdc) / 4;
@@ -50,7 +49,7 @@ void loop()
 
     writeToPins(red, green, blue);
 
-    delay(DELAY); //just to be safe
+    delay(DELAY); //safety first
 }
 
 /* Analog for PWM */
