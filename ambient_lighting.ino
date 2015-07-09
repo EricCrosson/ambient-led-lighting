@@ -3,8 +3,6 @@
 
 #define mapValueToPins(value) writeToPins(value, value, value)
 #define DELAY 25		/* in milliseconds */
-#define LOWER 10		/* /255 */
-#define UPPER 250		/* /255 */
 
 // Oh no! My lovely PWM pin 9 is out of order. Too much entropy!
 #define redPin    3		//Red pin 3 has PWM
@@ -17,8 +15,6 @@
 #define blueAdc   A3
 
 #define internalLED 13
-
-bool down = true;		/* directional flag */
 
 int adc;
 uchar red, green, blue;		//red, green and blue values
