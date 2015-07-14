@@ -66,16 +66,17 @@ void writeToPins(int red, int blue, int green)
 }
 
 void scheme_white() {
-    red = 4*brightness;
-    blue = 4*brightness;
-    green = 4*brightness;
+    brightness = analogRead(adcPin);
+    red = brightness;
+    blue = brightness;
+    green = brightness;
 }
 
 void scheme_echo() {
-    brightness = analogRead(adcPin);
-    red = analogRead(redAdc) / 4;
-    green = analogRead(greenAdc) / 4;
-    blue = analogRead(blueAdc) / 4;
+    brightness = analogRead(adcPin)/4;
+    red = analogRead(redAdc)*brightness;
+    green = analogRead(greenAdc)*brightness;
+    blue = analogRead(blueAdc)*brightness;
 }
 
 void wavelength_to_rgb(unsigned int wavelength) {
