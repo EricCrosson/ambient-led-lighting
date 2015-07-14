@@ -1,0 +1,13 @@
+* Ambient lighting
+
+No circuit diagram just yet.
+
+But, here is the code for some simple mood lighting I use in my residence. Mood
+lighting is based on schema. The following schemas are supported
+
+| Scheme | Behavior |
+|--------+----------|
+| White  | Display  |
+
+Brightness in all modes is 
+
