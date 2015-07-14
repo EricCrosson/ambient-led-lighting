@@ -10,7 +10,6 @@
 
 #define internalLED 13
 
-int adc;
 unsigned char red, green, blue;
 
 enum schema {
@@ -19,6 +18,7 @@ enum schema {
     fade,      // todo: implement
     fade_warm, // todo: implement
     fade_cold, // todo: implement
+    echo,
 };
 
 void setup()
@@ -44,15 +44,9 @@ void setup()
 
 void loop()
 {
-    adc = analogRead(adcPin);
-    red = analogRead(redAdc) / 4;
-    green = analogRead(greenAdc) / 4;
-    blue = analogRead(blueAdc) / 4;
-
     switch(scheme) {
-    case white:
-        scheme_white();
-        break;
+    case white: scheme_white(); break;
+    case echo:  scheme_echo();  break
     default: break;
     }
     writeToPins(red, green, blue);
@@ -74,6 +68,13 @@ void scheme_white() {
     red /= 4;
     blue /= 4;
     green /= 4;
+}
+
+void scheme_echo() {
+    /* int adc = analogRead(adcPin); */
+    red = analogRead(redAdc) / 4;
+    green = analogRead(greenAdc) / 4;
+    blue = analogRead(blueAdc) / 4;
 }
 
 void wavelength_to_rgb(unsigned int wavelength) {
