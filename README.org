@@ -1,4 +1,4 @@
-* Ambient lighting [[http://www.gnu.org/licenses/gpl-3.0.html][[[http://img.shields.io/:license-gpl3-blue.svg]]]]
+* Ambient lighting
 No circuit diagram just yet.
 
 Here is the code for some simple mood lighting I use in my residence. Mood
