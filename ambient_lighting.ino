@@ -10,6 +10,7 @@
 
 #define internalLED 13
 
+int brightness;
 unsigned char red, green, blue;
 
 enum schema {
@@ -65,13 +66,13 @@ void writeToPins(int red, int blue, int green)
 }
 
 void scheme_white() {
-    red /= 4;
-    blue /= 4;
-    green /= 4;
+    red = 4*brightness;
+    blue = 4*brightness;
+    green = 4*brightness;
 }
 
 void scheme_echo() {
-    /* int adc = analogRead(adcPin); */
+    brightness = analogRead(adcPin);
     red = analogRead(redAdc) / 4;
     green = analogRead(greenAdc) / 4;
     blue = analogRead(blueAdc) / 4;
