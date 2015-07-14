@@ -12,7 +12,7 @@
 
 int brightness;
 unsigned char red, green, blue;
-unsigned int spectrum, spectrum_speed;
+unsigned int spectrum, spectrum_speed, spectrum_initial;
 boolean spectrum_loop, spectrum_decreasing;
 
 enum schema {
@@ -43,8 +43,11 @@ void setup()
 
     /* Set the scheme used to illuminate */
     scheme = white;
+
+    /* Set the spectrum information */
+    spectrum_initial = 380;
+    spectrum = spectrum_initial;
     spectrum_loop = false;
-    spectrum = 400;
     spectrum_decreasing = false;
 }
 
@@ -92,7 +95,11 @@ void scheme_spectrum() {
     if (spectrum_decreasing && spectrum < 385) {
         spectrum_decreasing = false;
     } else if (!spectrum_decreasing && spectrum > 775) {
+        if (spectrum_loop) {
+            spectrum = spectrum_initial;
+        } else {
         spectrum_decreasing = true;
+        }
     }
     if (spectrum_decreasing) {
         spectrum--;
