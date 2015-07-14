@@ -12,6 +12,8 @@
 
 int brightness;
 unsigned char red, green, blue;
+unsigned int spectrum, spectrum_speed;
+boolean spectrum_loop, spectrum_decreasing;
 
 enum schema {
     white,
@@ -41,6 +43,9 @@ void setup()
 
     /* Set the scheme used to illuminate */
     scheme = white;
+    spectrum_loop = false;
+    spectrum = 400;
+    spectrum_decreasing = false;
 }
 
 void loop()
@@ -48,6 +53,7 @@ void loop()
     switch(scheme) {
     case white: scheme_white(); break;
     case echo:  scheme_echo();  break
+    case spectrum:  scheme_spectrum();  break
     default: break;
     }
     writeToPins(red, green, blue);
@@ -77,6 +83,23 @@ void scheme_echo() {
     red = analogRead(redAdc)*brightness;
     green = analogRead(greenAdc)*brightness;
     blue = analogRead(blueAdc)*brightness;
+}
+
+/* bool spectrum_loop: when true, roygbiv->r. when false, roygbiv->i */
+void scheme_spectrum() {
+    /* TODO: implement brightness */
+    /* brightness = analogRead(adcPin)/4; */
+    if (spectrum_decreasing && spectrum < 385) {
+        spectrum_decreasing = false;
+    } else if (!spectrum_decreasing && spectrum > 775) {
+        spectrum_decreasing = true;
+    }
+    if (spectrum_decreasing) {
+        spectrum--;
+    } else {
+        spectrum++;
+    }
+    wavelength_to_rgb(spectrum);
 }
 
 void wavelength_to_rgb(unsigned int wavelength) {

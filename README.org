@@ -5,9 +5,11 @@ No circuit diagram just yet.
 But, here is the code for some simple mood lighting I use in my residence. Mood
 lighting is based on schema. The following schemas are supported
 
-| Scheme | Behavior |
-|--------+----------|
-| White  | Display  |
+| Scheme   | Behavior                                            |
+|----------+-----------------------------------------------------|
+| White    | Display white light                                 |
+| Echo     | Display the average color detected on the display   |
+| Spectrum | Vary wavelength along the entire spectrum over time |
 
-Brightness in all modes is 
+Brightness in all modes is controlled via the brightness potentiometer.
 
