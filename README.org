@@ -1,8 +1,7 @@
-* Ambient lighting
-
+* Ambient lighting [[http://img.shields.io/:license-gpl3-blue.svg][GNU GPL]]
 No circuit diagram just yet.
 
-But, here is the code for some simple mood lighting I use in my residence. Mood
+Here is the code for some simple mood lighting I use in my residence. Mood
 lighting is based on schema. The following schemas are supported
 
 | Scheme   | Behavior                                            |
@@ -11,5 +10,6 @@ lighting is based on schema. The following schemas are supported
 | Echo     | Display the average color detected on the display   |
 | Spectrum | Vary wavelength along the entire spectrum over time |
 
-Brightness in all modes is controlled via the brightness potentiometer.
-
+Brightness in all modes is controlled via the brightness potentiometer. The
+spectral mode can be configured to scroll from red to violet to red or loop from
+red to violet with a discrete jump back to red.
