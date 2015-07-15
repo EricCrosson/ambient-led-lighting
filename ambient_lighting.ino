@@ -72,7 +72,6 @@ void mapValueToPins(unsigned char value) {
 /* Analog pins are used for PWM */
 void writeToPins(int red, int blue, int green)
 {
-    keepColorsInBounds();
     analogWrite(0xFF & ((unsigned char)redPin), red);
     analogWrite(0xFF & ((unsigned char)greenPin), green);
     analogWrite(0xFF & ((unsigned char)bluePin), blue);
