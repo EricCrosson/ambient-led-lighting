@@ -121,30 +121,30 @@ void scheme_spectrum() {
 void wavelength_to_rgb(unsigned int wavelength) {
         double SSS=0, R=0, G=0, B=0;
 
-        if (wavelength >= 380 && w < 440) {
+        if (wavelength >= 380 && wavelength < 440) {
             R = -(wavelength - 440.0) / (440.0 - 350.0);
             B = 1.0;
-        } else if (wavelength >= 440 && w < 490) {
+        } else if (wavelength >= 440 && wavelength < 490) {
             G = (wavelength - 440.0) / (490.0 - 440.0);
             B = 1.0;
-        } else if (wavelength >= 490 && w < 510) {
+        } else if (wavelength >= 490 && wavelength < 510) {
             G = 1.0;
             B = -(wavelength - 510.0) / (510.0 - 490.0);
-        } else if (wavelength >= 510 && w < 580) {
+        } else if (wavelength >= 510 && wavelength < 580) {
             R = (wavelength - 510.0) / (580.0 - 510.0);
             G = 1.0;
-        } else if (wavelength >= 580 && w < 645) {
+        } else if (wavelength >= 580 && wavelength < 645) {
             R = 1.0;
             G = -(wavelength - 645.0) / (645.0 - 580.0);
-        } else if (wavelength >= 645 && w <= 780) {
+        } else if (wavelength >= 645 && wavelength <= 780) {
             R = 1.0;
         }
 
-        if (wavelength >= 380 && w < 420) {
+        if (wavelength >= 380 && wavelength < 420) {
             SSS = 0.3 + 0.7 * (wavelength - 350) / (420 - 350);
-        } else if (wavelength >= 420 && w <= 700) {
+        } else if (wavelength >= 420 && wavelength <= 700) {
             SSS = 1.0;
-        } else if (wavelength > 700 && w <= 780) {
+        } else if (wavelength > 700 && wavelength <= 780) {
             SSS = 0.3 + 0.7 * (780 - wavelength) / (780 - 700);
         }
 
