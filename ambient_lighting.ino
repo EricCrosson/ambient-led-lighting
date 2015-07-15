@@ -71,28 +71,38 @@ void loop() {
 }
 
 void mapValueToPins(unsigned char value) {
-    writeToPins(value, value, value);
+    red = value;
+    blue = value;
+    green = value;
 }
 
 /* Analog pins are used for PWM */
 void writeToPins(int red, int blue, int green) {
-    analogWrite(0xFF & ((unsigned char)redPin), red);
-    analogWrite(0xFF & ((unsigned char)greenPin), green);
-    analogWrite(0xFF & ((unsigned char)bluePin), blue);
+    analogWrite(redPin, 0xFF & (unsigned char) red);
+    analogWrite(greenPin, 0xFF & (unsigned char) green);
+    analogWrite(bluePin, 0xFF & (unsigned char) blue);
+}
+
+void set_brightness(unsigned char brightness) {
+    red = red * 255 / brightness;
+    green = green * 255 / brightness;
+    blue = blue * 255 / brightness;
 }
 
 void scheme_white() {
     brightness = analogRead(adcPin);
-    red = brightness;
-    blue = brightness;
-    green = brightness;
+    red = 255;
+    blue = 255;
+    green = 255;
+    set_brightness(brightness);
 }
 
 void scheme_echo() {
     brightness = analogRead(adcPin)/4;
-    red = analogRead(redAdc)*brightness;
-    green = analogRead(greenAdc)*brightness;
-    blue = analogRead(blueAdc)*brightness;
+    red = analogRead(redAdc);
+    green = analogRead(greenAdc);
+    blue = analogRead(blueAdc);
+    set_brightness(brightness);
 }
 
 /* looping:   restart loop
