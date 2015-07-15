@@ -43,18 +43,23 @@ void setup() {
     /* Set the scheme used to illuminate */
     scheme = white;
 
-    /* Set the spectrum information */
-    spectrum_initial = 380;
-    spectrum = spectrum_initial;
-    spectrum_loop = false;
-    spectrum_decreasing = false;
+    /* Set the scheme metadata */
+    switch(scheme) {
+    case spectrum:
+        spectrum_initial = 380;
+        spectrum = spectrum_initial;
+        spectrum_loop = false;
+        spectrum_decreasing = false;
+        break;
+    default: break;
+    }
 }
 
 void loop() {
     switch(scheme) {
-    case white: scheme_white(); break;
-    case echo:  scheme_echo();  break
-    case spectrum:  scheme_spectrum();  break
+    case white:     scheme_white();     break;
+    case echo:      scheme_echo();      break;
+    case spectrum:  scheme_spectrum();  break;
     default: break;
     }
     writeToPins(red, green, blue);
