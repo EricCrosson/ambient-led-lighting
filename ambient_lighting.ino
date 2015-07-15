@@ -10,6 +10,8 @@
 
 #define internalLED 13
 
+#definen spectrum_increasing (!spectrum_decreasing)
+
 int brightness;
 unsigned char red, green, blue;
 unsigned int spectrum, spectrum_speed, spectrum_initial;
@@ -93,24 +95,26 @@ void scheme_echo() {
     blue = analogRead(blueAdc)*brightness;
 }
 
+/* looping:   restart loop
+ * scrolling: reverse direction */
+void spectrum_end_of_range() {
+    if (spectrum_loop) {
+        spectrum = spectrum_initial;
+    } else {
+        spectrum_decreasing = !spectrum_decreasing;
+    }
+}
+
 /* bool spectrum_loop: when true, roygbiv->r. when false, roygbiv->i */
 void scheme_spectrum() {
     /* TODO: implement brightness */
     /* brightness = analogRead(adcPin)/4; */
     if (spectrum_decreasing && spectrum < 385) {
         spectrum_decreasing = false;
-    } else if (!spectrum_decreasing && spectrum > 775) {
-        if (spectrum_loop) {
-            spectrum = spectrum_initial;
-        } else {
-        spectrum_decreasing = true;
-        }
+    } else if (spectrum_increasing && spectrum > 775) {
+        spectrum_end_of_range();
     }
-    if (spectrum_decreasing) {
-        spectrum--;
-    } else {
-        spectrum++;
-    }
+    spectrum = spectrum_decreasing ? spectrum-1 : spectrum+1;
     wavelength_to_rgb(spectrum);
 }
 
