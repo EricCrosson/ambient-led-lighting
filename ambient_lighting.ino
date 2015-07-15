@@ -10,7 +10,7 @@
 
 #define internalLED 13
 
-#definen spectrum_increasing (!spectrum_decreasing)
+#define spectrum_increasing (!spectrum_decreasing)
 
 int brightness;
 unsigned char red, green, blue;
