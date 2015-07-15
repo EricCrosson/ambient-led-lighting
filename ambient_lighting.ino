@@ -65,6 +65,10 @@ void loop()
     delay(25 /* ms */);
 }
 
+void mapValueToPins(unsigned char value) {
+    writeToPins(value, value, value);
+}
+
 /* Analog pins are used for PWM */
 void writeToPins(int red, int blue, int green)
 {
