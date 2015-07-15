@@ -1,5 +1,5 @@
 // Oh no! My lovely PWM pin 9 is out of order. Too much entropy!
-#define redPin    3		//Red pin 3 has PWM
+#define redPin    3	    //Red pin 3 has PWM
 #define greenPin  10		//Green pin 10 has PWM
 #define bluePin   11		//Blue pin 11 has PWM
 
