@@ -119,39 +119,37 @@ void scheme_spectrum() {
 }
 
 void wavelength_to_rgb(unsigned int wavelength) {
-        var w = SSS, R=0, G=0, B=0;
+        double SSS=0, R=0, G=0, B=0;
 
-        if (w >= 380 && w < 440) {
-            R = -(w - 440.0) / (440.0 - 350.0);
+        if (wavelength >= 380 && w < 440) {
+            R = -(wavelength - 440.0) / (440.0 - 350.0);
             B = 1.0;
-        } else if (w >= 440 && w < 490) {
-            G = (w - 440.0) / (490.0 - 440.0);
+        } else if (wavelength >= 440 && w < 490) {
+            G = (wavelength - 440.0) / (490.0 - 440.0);
             B = 1.0;
-        } else if (w >= 490 && w < 510) {
+        } else if (wavelength >= 490 && w < 510) {
             G = 1.0;
-            B = -(w - 510.0) / (510.0 - 490.0);
-        } else if (w >= 510 && w < 580) {
-            R = (w - 510.0) / (580.0 - 510.0);
+            B = -(wavelength - 510.0) / (510.0 - 490.0);
+        } else if (wavelength >= 510 && w < 580) {
+            R = (wavelength - 510.0) / (580.0 - 510.0);
             G = 1.0;
-        } else if (w >= 580 && w < 645) {
+        } else if (wavelength >= 580 && w < 645) {
             R = 1.0;
-            G = -(w - 645.0) / (645.0 - 580.0);
-        } else if (w >= 645 && w <= 780) {
+            G = -(wavelength - 645.0) / (645.0 - 580.0);
+        } else if (wavelength >= 645 && w <= 780) {
             R = 1.0;
         }
 
-        if (w >= 380 && w < 420) {
-            SSS = 0.3 + 0.7 * (w - 350) / (420 - 350);
-        } else if (w >= 420 && w <= 700) {
+        if (wavelength >= 380 && w < 420) {
+            SSS = 0.3 + 0.7 * (wavelength - 350) / (420 - 350);
+        } else if (wavelength >= 420 && w <= 700) {
             SSS = 1.0;
-        } else if (w > 700 && w <= 780) {
-            SSS = 0.3 + 0.7 * (780 - w) / (780 - 700);
-        } else {
-            SSS = 0.0;
+        } else if (wavelength > 700 && w <= 780) {
+            SSS = 0.3 + 0.7 * (780 - wavelength) / (780 - 700);
         }
 
         SSS *= 255;
-        red =  SSS*R;
-        green = SSS*G;
-        blue = SSS*B;
+        red = (unsigned char) (SSS*R);
+        green = S(unsigned char) (SSS*G);
+        blue = S(unsigned char) (SSS*B);
 }
