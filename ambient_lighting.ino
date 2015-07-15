@@ -119,7 +119,7 @@ void scheme_spectrum() {
 }
 
 void wavelength_to_rgb(unsigned int wavelength) {
-        var w = SSS, R, G, B;
+        var w = SSS, R=0, G=0, B=0;
 
         if (w >= 380 && w < 440) {
             R = -(w - 440.0) / (440.0 - 350.0);
@@ -143,10 +143,6 @@ void wavelength_to_rgb(unsigned int wavelength) {
             B = 0.0;
         } else if (w >= 645 && w <= 780) {
             R = 1.0;
-            G = 0.0;
-            B = 0.0;
-        } else {
-            R = 0.0;
             G = 0.0;
             B = 0.0;
         }
