@@ -24,8 +24,7 @@ enum schema {
     echo,
 };
 
-void setup()
-{
+void setup() {
     /* Initialize hardware */
     pinMode(internalLED,OUTPUT);
     pinMode(redPin, OUTPUT);
@@ -51,8 +50,7 @@ void setup()
     spectrum_decreasing = false;
 }
 
-void loop()
-{
+void loop() {
     switch(scheme) {
     case white: scheme_white(); break;
     case echo:  scheme_echo();  break
@@ -70,8 +68,7 @@ void mapValueToPins(unsigned char value) {
 }
 
 /* Analog pins are used for PWM */
-void writeToPins(int red, int blue, int green)
-{
+void writeToPins(int red, int blue, int green) {
     analogWrite(0xFF & ((unsigned char)redPin), red);
     analogWrite(0xFF & ((unsigned char)greenPin), green);
     analogWrite(0xFF & ((unsigned char)bluePin), blue);
