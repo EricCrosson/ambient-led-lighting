@@ -150,6 +150,6 @@ void wavelength_to_rgb(unsigned int wavelength) {
 
         SSS *= 255;
         red = (unsigned char) (SSS*R);
-        green = S(unsigned char) (SSS*G);
-        blue = S(unsigned char) (SSS*B);
+        green = (unsigned char) (SSS*G);
+        blue = (unsigned char) (SSS*B);
 }
